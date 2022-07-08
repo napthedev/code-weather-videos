@@ -5,14 +5,14 @@ jobs:
   render:
     name: Render video
     runs-on: ubuntu-latest
+    env:
+      API_KEY: ${{ secrets.API_KEY }}
     steps:
       - uses: actions/checkout@main
       - uses: actions/setup-node@main
       - run: sudo apt update
       - run: sudo apt install ffmpeg
       - run: npm i
-        env:
-          API_KEY: ${{ secrets.API_KEY }}
       - run: npm run build
       - uses: actions/upload-artifact@v2
         with:
