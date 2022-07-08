@@ -2,11 +2,13 @@ import { animations, cities } from "../shared/constants";
 import { WeatherResponse } from "../shared/types";
 
 export const getWeatherData = async () => {
+  if (!process.env.REMOTION_API_KEY) throw new Error("No API Key specified");
+
   const response = (await Promise.all(
     cities.map(async (city) => {
       const data = await (
         await fetch(
-          `https://api.openweathermap.org/data/2.5/onecall?lat=${city.lat}&lon=${city.lon}&appid=${process.env.API_KEY}&units=metric`
+          `https://api.openweathermap.org/data/2.5/onecall?lat=${city.lat}&lon=${city.lon}&appid=${process.env.REMOTION_API_KEY}&units=metric`
         )
       ).json();
       return data;
