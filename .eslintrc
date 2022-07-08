@@ -1,0 +1,7 @@
+{
+	"extends": "@remotion",
+	"rules": {
+		"react/self-closing-comp": "off",
+		"react/jsx-sort-props": "off"
+	}
+}
