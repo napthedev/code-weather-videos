@@ -62,7 +62,7 @@ upload(
     },
   ],
   {
-    headless: process.env.HEADLESS !== "false",
+    headless: true,
   }
 ).then(async (res) => {
   console.log(res);
