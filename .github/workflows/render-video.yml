@@ -4,7 +4,7 @@ on:
 jobs:
   render:
     name: Render video
-    runs-on: ubuntu-22.04
+    runs-on: macos-12
     env:
       REMOTION_API_KEY: ${{ secrets.REMOTION_API_KEY }}
       EMAIL: ${{ secrets.EMAIL }}
