@@ -11,7 +11,7 @@ jobs:
         run: docker pull ${{secrets.DOCKER_USERNAME}}/${{secrets.DOCKER_IMAGE_NAME}}:latest
       - name: Docker run
         run:
-          docker run -it ${{secrets.DOCKER_USERNAME}}/${{secrets.DOCKER_IMAGE_NAME}}:latest \
+          docker run ${{secrets.DOCKER_USERNAME}}/${{secrets.DOCKER_IMAGE_NAME}}:latest \
           -e REMOTION_API_KEY=${{ secrets.REMOTION_API_KEY }} \
           -e EMAIL=${{ secrets.EMAIL }} \
           -e PASSWORD=${{ secrets.PASSWORD }} \
