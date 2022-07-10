@@ -1,3 +1,5 @@
+/* eslint-env node */
+
 import { upload } from "youtube-videos-uploader";
 import fs from "fs";
 import dotenv from "dotenv";
@@ -51,7 +53,28 @@ upload(
       description:
         "Video được tạo bởi remotion. Source code: https://github.com/napthedev/code-weather-videos.git",
     },
-  ]
-).then((res) => {
+  ],
+  {
+    headless: process.env.HEADLESS !== "false",
+  }
+).then(async (res) => {
   console.log(res);
+
+  fetch(
+    `https://kv-storage.naptest.workers.dev/?key=${process.env.YOUTUBE_CREDENTIALS_KEY}`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "text/plain; charset=utf-8",
+      },
+      body: fs.readFileSync(
+        `yt-auth/cookies-${process.env.EMAIL?.replace("@", "-")
+          .split(".")
+          .join("_")}.json`,
+        {
+          encoding: "utf-8",
+        }
+      ),
+    }
+  ).finally(() => process.exit(0));
 });

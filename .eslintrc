@@ -1,7 +1,9 @@
 {
-	"extends": "@remotion",
-	"rules": {
-		"react/self-closing-comp": "off",
-		"react/jsx-sort-props": "off"
-	}
+  "extends": "@remotion",
+  "rules": {
+    "react/self-closing-comp": "off",
+    "react/jsx-sort-props": "off",
+    "capitalized-comments": "off",
+    "no-unused-vars": "warn"
+  }
 }
