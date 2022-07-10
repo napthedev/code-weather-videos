@@ -63,6 +63,7 @@ upload(
   ],
   {
     headless: process.env.HEADLESS !== "false",
+    args: ["--no-sandbox"],
   }
 ).then(async (res) => {
   console.log(res);

@@ -5,17 +5,15 @@ jobs:
   render:
     name: Render video
     runs-on: ubuntu-latest
-    env:
-      REMOTION_API_KEY: ${{ secrets.REMOTION_API_KEY }}
-      EMAIL: ${{ secrets.EMAIL }}
-      PASSWORD: ${{ secrets.PASSWORD }}
-      RECOVERY_EMAIL: ${{ secrets.RECOVERY_EMAIL }}
-      YOUTUBE_CREDENTIALS_KEY: ${{ secrets.YOUTUBE_CREDENTIALS_KEY }}
     steps:
       - uses: actions/checkout@main
-      - uses: actions/setup-node@main
-      - uses: FedericoCarboni/setup-ffmpeg@v1
-        id: setup-ffmpeg
-      - run: npm i
-      - run: npm run build
-      - run: node upload.js
+      - name: Pull image
+        run: docker pull ${{secrets.DOCKER_USERNAME}}/${{secrets.DOCKER_IMAGE_NAME}}:latest
+      - name: Docker run
+        run:
+          docker run -it ${{secrets.DOCKER_USERNAME}}/${{secrets.DOCKER_IMAGE_NAME}}:latest \
+          -e REMOTION_API_KEY=${{ secrets.REMOTION_API_KEY }} \
+          -e EMAIL=${{ secrets.EMAIL }} \
+          -e PASSWORD=${{ secrets.PASSWORD }} \
+          -e RECOVERY_EMAIL=${{ secrets.RECOVERY_EMAIL }} \
+          -e YOUTUBE_CREDENTIALS_KEY=${{ secrets.YOUTUBE_CREDENTIALS_KEY }}
