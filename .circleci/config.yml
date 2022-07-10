@@ -5,8 +5,6 @@ jobs:
       xcode: "12.5.1"
     steps:
       - checkout
-      - setup_remote_docker:
-          version: 20.10.14
       - run:
           name: Pull image
           command: docker pull $DOCKER_USERNAME/$DOCKER_IMAGE_NAME:latest
