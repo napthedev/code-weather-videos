@@ -56,6 +56,9 @@ upload(
       title: `Dự báo thời tiết ${dayjs().format("dddd, DD/MM/YYYY")}`,
       description:
         "Video được tạo bởi remotion. Source code: https://github.com/napthedev/code-weather-videos.git",
+      onProgress: (progress) => console.log("Progress: ", progress),
+      onSuccess: (url) => console.log("Uploaded: ", url),
+      skipProcessingWait: true,
     },
   ],
   {
