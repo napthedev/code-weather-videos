@@ -6,7 +6,11 @@ jobs:
     name: Render video
     runs-on: ubuntu-latest
     env:
-      REMOTION_API_KEY: ${{ secrets.API_KEY }}
+      REMOTION_API_KEY: ${{ secrets.REMOTION_API_KEY }}
+      EMAIL: ${{ secrets.EMAIL }}
+      PASSWORD: ${{ secrets.PASSWORD }}
+      RECOVERY_EMAIL: ${{ secrets.RECOVERY_EMAIL }}
+      YOUTUBE_CREDENTIALS_KEY: ${{ secrets.YOUTUBE_CREDENTIALS_KEY }}
     steps:
       - uses: actions/checkout@main
       - uses: actions/setup-node@main
@@ -14,7 +18,4 @@ jobs:
       - run: sudo apt install ffmpeg
       - run: npm i
       - run: npm run build
-      - uses: actions/upload-artifact@v2
-        with:
-          name: out.mp4
-          path: out/video.mp4
+      - run: node upload.js

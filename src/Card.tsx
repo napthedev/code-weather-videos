@@ -2,7 +2,6 @@ import { interpolate } from "remotion";
 import { useCurrentFrame } from "remotion";
 import { useVideoConfig } from "remotion";
 import { FC } from "react";
-// Import Lottie from "react-lottie-player";
 import Lottie from "lottie-react";
 
 interface CardProps {
