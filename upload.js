@@ -2,7 +2,7 @@ import { upload } from "youtube-videos-uploader";
 import fs from "fs";
 import dotenv from "dotenv";
 import dayjs from "dayjs";
-import updateLocale from "dayjs/plugin/updateLocale";
+import updateLocale from "dayjs/plugin/updateLocale.js";
 import fetch from "node-fetch";
 
 dotenv.config();
@@ -31,8 +31,10 @@ try {
   fs.mkdirSync("yt-auth", { recursive: true });
 
   fs.writeFileSync(
-    `cookies-${process.env.EMAIL?.replace("@", "-").split(".").join("_")}.json`,
-    JSON.stringify(existingCredentials)
+    `yt-auth/cookies-${process.env.EMAIL?.replace("@", "-")
+      .split(".")
+      .join("_")}.json`,
+    existingCredentials
   );
 } catch (_) {}
 
