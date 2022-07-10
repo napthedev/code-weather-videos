@@ -8,7 +8,9 @@ jobs:
       - setup_remote_docker:
           version: 20.10.14
       - run:
-          echo "$DOCKER_USERNAME/$DOCKER_IMAGE_NAME"
-          docker pull $DOCKER_USERNAME/$DOCKER_IMAGE_NAME:latest
-          docker run -e REMOTION_API_KEY=$REMOTION_API_KEY -e EMAIL=$EMAIL -e PASSWORD=$PASSWORD -e RECOVERY_EMAIL=$RECOVERY_EMAIL -e YOUTUBE_CREDENTIALS_KEY=$YOUTUBE_CREDENTIALS_KEY $DOCKER_USERNAME/$DOCKER_IMAGE_NAME:latest
+          name: Pull image
+          command: docker pull $DOCKER_USERNAME/$DOCKER_IMAGE_NAME:latest
+      - run:
+          name: Docker run
+          command: docker run -e REMOTION_API_KEY=$REMOTION_API_KEY -e EMAIL=$EMAIL -e PASSWORD=$PASSWORD -e RECOVERY_EMAIL=$RECOVERY_EMAIL -e YOUTUBE_CREDENTIALS_KEY=$YOUTUBE_CREDENTIALS_KEY $DOCKER_USERNAME/$DOCKER_IMAGE_NAME:latest
 
