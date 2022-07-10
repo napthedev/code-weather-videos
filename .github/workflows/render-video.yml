@@ -4,7 +4,7 @@ on:
 jobs:
   render:
     name: Render video
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@main
       - name: Pull image
