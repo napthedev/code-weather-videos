@@ -10,10 +10,4 @@ jobs:
       - name: Pull image
         run: docker pull ${{secrets.DOCKER_USERNAME}}/${{secrets.DOCKER_IMAGE_NAME}}:latest
       - name: Docker run
-        run:
-          docker run ${{secrets.DOCKER_USERNAME}}/${{secrets.DOCKER_IMAGE_NAME}}:latest \
-          -e REMOTION_API_KEY=${{ secrets.REMOTION_API_KEY }} \
-          -e EMAIL=${{ secrets.EMAIL }} \
-          -e PASSWORD=${{ secrets.PASSWORD }} \
-          -e RECOVERY_EMAIL=${{ secrets.RECOVERY_EMAIL }} \
-          -e YOUTUBE_CREDENTIALS_KEY=${{ secrets.YOUTUBE_CREDENTIALS_KEY }}
+        run: docker run -e REMOTION_API_KEY=${{ secrets.REMOTION_API_KEY }} -e EMAIL=${{ secrets.EMAIL }} -e PASSWORD=${{ secrets.PASSWORD }} -e RECOVERY_EMAIL=${{ secrets.RECOVERY_EMAIL }} -e YOUTUBE_CREDENTIALS_KEY=${{ secrets.YOUTUBE_CREDENTIALS_KEY }} ${{secrets.DOCKER_USERNAME}}/${{secrets.DOCKER_IMAGE_NAME}}:latest
