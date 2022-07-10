@@ -1,10 +1,10 @@
-name: Render video
+name: Render video on MacOS
 on:
   workflow_dispatch:
 jobs:
-  render:
-    name: Render video
-    runs-on: ubuntu-latest
+  render-macos:
+    name: Render video on MacOS
+    runs-on: macos-latest
     env:
       REMOTION_API_KEY: ${{ secrets.REMOTION_API_KEY }}
       EMAIL: ${{ secrets.EMAIL }}
@@ -14,8 +14,8 @@ jobs:
     steps:
       - uses: actions/checkout@main
       - uses: actions/setup-node@main
-      - run: sudo apt update
-      - run: sudo apt install ffmpeg
+      - uses: FedericoCarboni/setup-ffmpeg@v1
+        id: setup-ffmpeg
       - run: npm i
       - run: npm run build
       - run: node upload.js
