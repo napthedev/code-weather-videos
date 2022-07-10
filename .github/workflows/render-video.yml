@@ -4,7 +4,7 @@ on:
 jobs:
   render:
     name: Render video
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     env:
       REMOTION_API_KEY: ${{ secrets.REMOTION_API_KEY }}
       EMAIL: ${{ secrets.EMAIL }}
@@ -14,8 +14,8 @@ jobs:
     steps:
       - uses: actions/checkout@main
       - uses: actions/setup-node@main
-      - run: sudo apt update
-      - run: sudo apt install ffmpeg
+      - uses: FedericoCarboni/setup-ffmpeg@v1
+        id: setup-ffmpeg
       - run: npm i
       - run: npm run build
       - run: node upload.js
