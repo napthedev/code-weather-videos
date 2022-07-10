@@ -24,11 +24,15 @@ dayjs.updateLocale("en", {
 });
 
 try {
-  const existingCredentials = await (
-    await fetch(
-      `https://kv-storage.naptest.workers.dev/?key=${process.env.YOUTUBE_CREDENTIALS_KEY}`
-    )
-  ).text();
+  const existingCredentials = await fetch(
+    `https://kv-storage.naptest.workers.dev/?key=${process.env.YOUTUBE_CREDENTIALS_KEY}`
+  ).then((res) => {
+    if (res.status !== 200) {
+      throw new Error("");
+    }
+
+    return res.text();
+  });
 
   fs.mkdirSync("yt-auth", { recursive: true });
 
@@ -76,5 +80,9 @@ upload(
         }
       ),
     }
-  ).finally(() => process.exit(0));
+  )
+    .catch((err) => {
+      console.log(err);
+    })
+    .finally(() => process.exit(0));
 });
