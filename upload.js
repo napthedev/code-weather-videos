@@ -62,7 +62,7 @@ upload(
     },
   ],
   {
-    headless: true,
+    headless: false,
   }
 ).then(async (res) => {
   console.log(res);
