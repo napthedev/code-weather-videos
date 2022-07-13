@@ -15,7 +15,7 @@ specifiers:
   react-dom: ^18.0.0
   remotion: ^3.0.27
   typescript: ^4.6.3
-  youtube-videos-uploader: ^1.3.60
+  youtube-videos-uploader: ^1.3.61
 
 dependencies:
   '@remotion/cli': 3.0.27_biqbaboplfbrettd7655fr4n2y
@@ -30,7 +30,7 @@ dependencies:
   react-dom: 18.2.0_react@18.2.0
   remotion: 3.0.27_biqbaboplfbrettd7655fr4n2y
   typescript: 4.7.4
-  youtube-videos-uploader: 1.3.60
+  youtube-videos-uploader: 1.3.61
 
 devDependencies:
   '@types/react': 18.0.14
@@ -3061,8 +3061,8 @@ packages:
       fd-slicer: 1.1.0
     dev: false
 
-  /youtube-videos-uploader/1.3.60:
-    resolution: {integrity: sha512-46oztylA/C4BhOz5ukIDG5kWbUkVYyyT1S1QxeF/96zbJuyKI7+/Egrw4KpFH5cqFFjKL8444/WR1YQr/h3HRQ==}
+  /youtube-videos-uploader/1.3.61:
+    resolution: {integrity: sha512-2aYRZLJbyi4HOl4kMN2+RCOzMCgtFHw0RIqT5AJNNptXVapz8HQMn/+P7na20yiU+KrKEKq7WWqCwkDVD1g/Gg==}
     dependencies:
       prettier: 2.7.1
       puppeteer: 14.4.1
