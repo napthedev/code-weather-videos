@@ -63,7 +63,7 @@ upload(
   ],
   {
     headless: process.env.HEADLESS !== "false",
-    args: ["--no-sandbox"],
+    args: ["--no-sandbox", "--disable-setuid-sandbox"],
   }
 ).then(async (res) => {
   console.log(res);
