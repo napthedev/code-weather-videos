@@ -14,7 +14,6 @@ jobs:
     steps:
       - uses: actions/checkout@main
       - uses: actions/setup-node@main
-      - run: sudo apt update
       - uses: FedericoCarboni/setup-ffmpeg@v1
         id: setup-ffmpeg
       - run: npm i
