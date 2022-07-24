@@ -1,0 +1,21 @@
+name: Render video without docker
+on:
+  workflow_dispatch:
+jobs:
+  render:
+    name: Render video
+    runs-on: ubuntu-latest
+    env:
+      REMOTION_API_KEY: ${{ secrets.REMOTION_API_KEY }}
+      EMAIL: ${{ secrets.EMAIL }}
+      PASSWORD: ${{ secrets.PASSWORD }}
+      RECOVERY_EMAIL: ${{ secrets.RECOVERY_EMAIL }}
+      YOUTUBE_CREDENTIALS_KEY: ${{ secrets.YOUTUBE_CREDENTIALS_KEY }}
+    steps:
+      - uses: actions/checkout@main
+      - uses: actions/setup-node@main
+      - run: sudo apt update
+      - run: sudo apt install ffmpeg
+      - run: npm i
+      - run: npm run build
+      - run: node upload.js
