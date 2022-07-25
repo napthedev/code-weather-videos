@@ -56,14 +56,15 @@ upload(
       title: `Dự báo thời tiết ${dayjs().format("dddd, DD/MM/YYYY")}`,
       description:
         "Video được tạo bởi remotion. Source code: https://github.com/napthedev/code-weather-videos.git",
+      language: "english",
+      skipProcessingWait: true,
       onProgress: (progress) => console.log("Progress: ", progress),
       onSuccess: (url) => console.log("Uploaded: ", url),
-      skipProcessingWait: true,
     },
   ],
   {
     headless: process.env.HEADLESS !== "false",
-    args: ["--no-sandbox", "--disable-setuid-sandbox"],
+    args: ["--no-sandbox", "--disable-setuid-sandbox", "--disable-extensions"],
   }
 ).then(async (res) => {
   console.log(res);
