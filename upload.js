@@ -60,6 +60,7 @@ upload(
       skipProcessingWait: true,
       onProgress: (progress) => console.log("Progress: ", progress),
       onSuccess: (url) => console.log("Uploaded: ", url),
+      channelName: "Code Weather Videos",
     },
   ],
   {
