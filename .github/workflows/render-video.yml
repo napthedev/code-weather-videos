@@ -9,9 +9,6 @@ jobs:
     runs-on: ubuntu-latest
     env:
       REMOTION_API_KEY: ${{ secrets.REMOTION_API_KEY }}
-      EMAIL: ${{ secrets.EMAIL }}
-      PASSWORD: ${{ secrets.PASSWORD }}
-      RECOVERY_EMAIL: ${{ secrets.RECOVERY_EMAIL }}
       YOUTUBE_CREDENTIALS_KEY: ${{ secrets.YOUTUBE_CREDENTIALS_KEY }}
     steps:
       - uses: actions/checkout@main
