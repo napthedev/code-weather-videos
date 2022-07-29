@@ -4,6 +4,7 @@
     "react/self-closing-comp": "off",
     "react/jsx-sort-props": "off",
     "capitalized-comments": "off",
-    "no-unused-vars": "warn"
+    "no-unused-vars": "warn",
+    "camelcase": "off"
   }
 }

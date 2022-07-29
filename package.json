@@ -2,33 +2,33 @@
   "name": "my-video",
   "version": "1.0.0",
   "description": "My Remotion video",
-  "type": "module",
   "scripts": {
     "start": "remotion preview src/index.tsx",
     "build": "remotion render src/index.tsx Main out/video.mp4",
     "upgrade": "remotion upgrade",
     "test": "eslint src --ext ts,tsx,js,jsx && tsc",
-    "upload": "node upload.js"
+    "upload": "ts-node upload.ts"
   },
   "repository": {},
   "license": "UNLICENSED",
   "dependencies": {
+    "@napthedev/youtubei.js": "^1.0.0",
     "@remotion/cli": "^3.0.27",
     "@remotion/eslint-config": "^3.0.27",
+    "axios": "^0.27.2",
     "dayjs": "^1.11.3",
     "dotenv": "^16.0.1",
     "eslint": "^8.14.0",
     "lottie-react": "^2.3.1",
-    "node-fetch": "^3.2.6",
     "prettier": "^2.2.1",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "remotion": "^3.0.27",
-    "typescript": "^4.6.3",
-    "youtube-videos-uploader": "^1.3.70"
+    "typescript": "^4.6.3"
   },
   "devDependencies": {
     "@types/react": "^18.0.6",
-    "@types/web": "^0.0.61"
+    "@types/web": "^0.0.61",
+    "ts-node": "^10.9.1"
   }
 }

@@ -1,13 +1,24 @@
 name: Render video
 on:
+  schedule:
+    - cron: "0 6 * * *"
   workflow_dispatch:
 jobs:
   render:
     name: Render video
     runs-on: ubuntu-latest
+    env:
+      REMOTION_API_KEY: ${{ secrets.REMOTION_API_KEY }}
+      EMAIL: ${{ secrets.EMAIL }}
+      PASSWORD: ${{ secrets.PASSWORD }}
+      RECOVERY_EMAIL: ${{ secrets.RECOVERY_EMAIL }}
+      YOUTUBE_CREDENTIALS_KEY: ${{ secrets.YOUTUBE_CREDENTIALS_KEY }}
     steps:
       - uses: actions/checkout@main
-      - name: Pull image
-        run: docker pull ${{secrets.DOCKER_USERNAME}}/${{secrets.DOCKER_IMAGE_NAME}}:latest
-      - name: Docker run
-        run: docker run -e REMOTION_API_KEY=${{ secrets.REMOTION_API_KEY }} -e EMAIL=${{ secrets.EMAIL }} -e PASSWORD=${{ secrets.PASSWORD }} -e RECOVERY_EMAIL=${{ secrets.RECOVERY_EMAIL }} -e YOUTUBE_CREDENTIALS_KEY=${{ secrets.YOUTUBE_CREDENTIALS_KEY }} ${{secrets.DOCKER_USERNAME}}/${{secrets.DOCKER_IMAGE_NAME}}:latest
+      - uses: actions/setup-node@main
+      - run: sudo apt update
+      - uses: FedericoCarboni/setup-ffmpeg@v1
+        id: setup-ffmpeg
+      - run: npm i
+      - run: npm run build
+      - run: npm run upload
