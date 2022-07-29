@@ -7,10 +7,16 @@ import axios from "axios";
 import dayjs from "dayjs";
 import updateLocale from "dayjs/plugin/updateLocale.js";
 import path from "path";
+import utc from "dayjs/plugin/utc";
+import timezone from "dayjs/plugin/timezone";
 
 dotenv.config();
 
 dayjs.extend(updateLocale);
+dayjs.extend(utc);
+dayjs.extend(timezone);
+
+dayjs.tz.setDefault("Asia/Saigon");
 
 dayjs.updateLocale("en", {
   weekdays: [
