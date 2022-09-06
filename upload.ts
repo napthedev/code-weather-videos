@@ -1,6 +1,6 @@
 /* eslint-env node */
 
-import { Innertube, UniversalCache } from "@napthedev/youtubei.js";
+import { Innertube, UniversalCache } from "youtubei.js";
 import fs from "fs";
 import dotenv from "dotenv";
 import axios from "axios";
